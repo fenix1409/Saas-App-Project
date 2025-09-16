@@ -8,7 +8,6 @@ const links = [
     { label: 'Home', href: '/' },
     { label: 'Companions', href: '/companions' },
     { label: 'My journey', href: '/my-journey' },
-    { label: 'Sign In', href: '/sign-in' }
 ]
 
 const NavItems = () => {
