@@ -51,7 +51,7 @@ interface CreateUser {
   email: string;
   name: string;
   image?: string;
-  accountId: string;
+  accountId?: string;
 }
 
 interface SearchParams {
