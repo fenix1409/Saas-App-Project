@@ -109,7 +109,7 @@ const CompanionComponent = ({ companionId, userImage, userName, style, voice, su
                     <div className="user-avatar">
                         <Image src={userImage} alt={userImage} width={130} height={130} className='rounded-lg' />
                         <p className='font-bold text-2xl'>{userName}</p>
-                        <button className='btn-mic' onClick={toggleMic}>
+                        <button disabled={callStatus !== CallStatus.ACTIVE} className='btn-mic' onClick={toggleMic}>
                             <Image src={isMuted ? '/icons/mic-off.svg' : '/icons/mic-on.svg'} alt='icons' width={36} height={36} />
                             <p className='max-ms:hidden'>{isMuted ? "Turn on microphone" : "Turn off microphone"}</p>
                         </button>
@@ -121,14 +121,14 @@ const CompanionComponent = ({ companionId, userImage, userName, style, voice, su
             </section>
             <section className='transcript'>
                 <div className="transcript-message no-scrollbar">
-                    {messages.map((message) => {
+                    {messages.map((message, index) => {
                         if (message.role === 'assistant') {
                             return (
-                                <p key={message.content} className='max-sm:text-sm'>{name.split('')[0].replace('/[.,]/g', "")}: {message.content}</p>
+                                <p key={index} className='max-sm:text-sm'>{name.split('')[0].replace('/[.,]/g', "")}: {message.content}</p>
                             )
                         }
                         else {
-                            return <p key={message.content} className='text-primary max-sm:text-sm'>{userName}: {message.content}</p>
+                            return <p key={index} className='text-primary max-sm:text-sm'>{userName}: {message.content}</p>
                         }
                     })}
                 </div>
